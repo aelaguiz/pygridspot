@@ -18,6 +18,7 @@ intended to make managing gridspot vms easier. Typical usage looks like:
 	    g.bootstrap(os.path.expanduser('~/.ssh/id_rsa'), instance, '/tmp/test.sh')
 
 The above code when executed results in:
+
 	aelaguiz$ python test.py
 	[Instance inst_<INSTANCE_ID> = Running]
 	[69.4.239.72:64333] put: /tmp/test.sh -> /tmp/test.sh
