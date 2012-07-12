@@ -1,7 +1,7 @@
 import os
 from pygridspot import *
 
-g = Gridspot(api_key='apikey_t_EcF8Dqg2NpBEwgUFcREQ',\
+g = Gridspot(api_key='<API KEY>',\
                 cache='file',\
                 cache_file='cache.dat')
 
