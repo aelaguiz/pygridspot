@@ -1,1 +1,3 @@
-v0.0.0, 7/12/2012 -- Initial release.
+v0.0.1, 7/12/2012 -- Fixed missing readme in sdist package. Initial release.
+
+v0.0.1dev, 7/12/2012 -- Initial upload.

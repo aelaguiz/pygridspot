@@ -44,4 +44,6 @@ Please do!
 Changelog
 ========
 
+0.01 - Initial release
+
 0.01dev - Initial Upload
