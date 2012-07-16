@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='PyGridspot',
-    version='0.0.1',
+    version='0.0.2',
     author='Amir Elaguizy',
     author_email='aelaguiz@gmail.com',
     packages=['pygridspot', 'pygridspot.v1', 'pygridspot.test'],

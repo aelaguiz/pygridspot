@@ -39,11 +39,13 @@ httplib2 >= 0.7.4
 Contributing
 ===========
 
-Please do!
+Fork, submit pull request.
 
 Changelog
 ========
 
-0.01 - Initial release
+	v0.0.2, 7/16/2012 -- Brought code up to pep8 standards, added support for stop_instance.
 
-0.01dev - Initial Upload
+	v0.0.1, 7/12/2012 -- Fixed missing readme in sdist package. Initial release.
+
+	v0.0.1dev, 7/12/2012 -- Initial upload.
