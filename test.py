@@ -1,9 +1,8 @@
 import os
 from pygridspot import *
 
-g = Gridspot(api_key='<API KEY>',\
-                cache='file',\
-                cache_file='cache.dat')
+g = Gridspot(
+    api_key='<API KEY>', cache='file', cache_file='cache.dat')
 
 il = g.get_instances()
 

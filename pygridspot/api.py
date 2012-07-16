@@ -3,14 +3,14 @@
     :mod:`api` -- Gridspot API Version Base
     ============================================
 
-    .. Copyright 2012 Amir Elaguizy 
+    .. Copyright 2012 Amir Elaguizy
 
     .. You should have received a copy of the BSD License along with this
        program; see the file LICENSE.
-       
+
     .. module:: api
     .. moduleauthor:: Amir Elaguizy <aelaguiz@gmail.com>
-""" 
+"""
 
 import urllib
 import urlparse
@@ -19,8 +19,9 @@ import httplib2
 from error import *
 from instancecache import *
 
+
 class Gridspot_api(object):
-    """ 
+    """
     Base api object to be inherited from when implementing a new api
     specification
     """
@@ -29,7 +30,7 @@ class Gridspot_api(object):
 
         self.__validateArgs()
         self.__setupCache()
-        
+
         # Requires a cache argument, even though we don't use it
         self.http = httplib2.Http(".cache")
 
@@ -48,7 +49,7 @@ class Gridspot_api(object):
         req_args.setdefault('api_key', self.args['api_key'])
 
         params = urllib.urlencode(req_args)
-        base_url = urlparse.urljoin(self.args['target_url_base'],func)
+        base_url = urlparse.urljoin(self.args['target_url_base'], func)
 
         return base_url + "?" + params
 
@@ -62,4 +63,3 @@ class Gridspot_api(object):
 
         self.__requireArg('api_key')
         self.__requireArg('target_url_base')
-

@@ -3,16 +3,17 @@
     :mod:`instancelist` -- Gridspot Instance List
     ============================================
 
-    .. Copyright 2012 Amir Elaguizy 
+    .. Copyright 2012 Amir Elaguizy
 
     .. You should have received a copy of the BSD License along with this
        program; see the file LICENSE.
-       
+
     .. module:: instancelist
     .. moduleauthor:: Amir Elaguizy <aelaguiz@gmail.com>
-""" 
+"""
 
 from instance import *
+
 
 class InstanceList:
     """
@@ -44,7 +45,8 @@ class InstanceList:
         ``Instance`` objects internally. Sets the new and term lists as well as
         updates the instances dictionary.
         """
-        instance_map = {i['instance_id']:i for i in instance_response['instances']}
+        instance_map = {
+            i['instance_id']: i for i in instance_response['instances']}
 
         existing_set = set(self.instances)
         updated_set = set(instance_map)
@@ -52,8 +54,8 @@ class InstanceList:
         new_set = updated_set.difference(existing_set)
         terminated_set = existing_set.difference(updated_set)
 
-        new_instances = [ Instance(instance_map[id]) for id in new_set ]
-        terminated_instances = [ self.instances[id] for id in terminated_set ]
+        new_instances = [Instance(instance_map[id]) for id in new_set]
+        terminated_instances = [self.instances[id] for id in terminated_set]
 
         for id in terminated_set:
             del self.instances[id]
@@ -63,5 +65,3 @@ class InstanceList:
 
         self.new = new_instances
         self.term = terminated_instances
-
-

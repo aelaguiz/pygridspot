@@ -2,11 +2,12 @@ import cgi
 import unittest
 from pygridspot import *
 
+
 class TestBasic(unittest.TestCase):
     def test_version(self):
         # Should throw for invalid api version
-        self.assertRaises(GridspotError, Gridspot, **{'api_key': 'lkjsdf',
-            'api_version':3333})
+        self.assertRaises(GridspotError, Gridspot, **{
+            'api_key': 'lkjsdf', 'api_version': 3333})
 
         # Should succeed
         g = Gridspot(api_key='32523', api_version=1)
@@ -18,7 +19,8 @@ class TestBasic(unittest.TestCase):
         g = Gridspot(api_key='32523', target_url_base='http://www.google.com/')
 
     def test_request_url(self):
-        g = Gridspot(api_key='32523', target_url_base='http://www.testurl.com/')
+        g = Gridspot(
+            api_key='32523', target_url_base='http://www.testurl.com/')
 
         url = g.api.get_request_url('testfunc', testarg1=5)
 

@@ -3,24 +3,26 @@
     :mod:`instance` -- Gridspot Instance
     ============================================
 
-    .. Copyright 2012 Amir Elaguizy 
+    .. Copyright 2012 Amir Elaguizy
 
     .. You should have received a copy of the BSD License along with this
        program; see the file LICENSE.
-       
+
     .. module:: instance
     .. moduleauthor:: Amir Elaguizy <aelaguiz@gmail.com>
-""" 
+"""
+
 
 class Instance:
     """
-    Defines an individual gridspot instance. Instance properties are dynamically
-    added to this object as attributes. This object will typically be
-    instantiated by the api, not the user
+    Defines an individual gridspot instance. Instance properties are
+    dynamically added to this object as attributes. This object will
+    typically be instantiated by the api, not the user
 
     Arguments:
-        - *obj* - An object whos attributes represent this instance. Typically a
-          deserialized json string as returned by the gridspot api servers.
+        - *obj* - An object whos attributes represent this instance.
+          Typically a deserialized json string as returned by the
+          gridspot api servers.
 
     API V1 Attributes:
          instance_id: "inst_vOsVC2U4DxcSi_P8XxTbQA"
@@ -39,5 +41,5 @@ class Instance:
             setattr(self, key, obj[key])
 
     def __repr__(self):
-        return "Instance {0} = {1}".format(self.instance_id,\
-            self.current_state)
+        return "Instance {0} = {1}".format(
+            self.instance_id, self.current_state)

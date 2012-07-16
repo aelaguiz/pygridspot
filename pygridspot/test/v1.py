@@ -5,6 +5,7 @@ import unittest
 import subprocess
 from pygridspot import *
 
+
 class V1(unittest.TestCase):
     def setUp(self):
         cwd = os.getcwd()
@@ -13,7 +14,7 @@ class V1(unittest.TestCase):
         print "Starting", server_path
         self.serv = subprocess.Popen(['python', server_path])
         time.sleep(1)
-    
+
     def tearDown(self):
         print "Stopping test server"
 
@@ -22,7 +23,8 @@ class V1(unittest.TestCase):
                         "'{print $2}' | xargs -I {} kill -9 {}", shell=True)
 
     def test_list(self):
-        g = Gridspot(api_key='testkey', target_url_base='http://localhost:5000')
+        g = Gridspot(
+            api_key='testkey', target_url_base='http://localhost:5000')
 
         il = g.get_instances()
 

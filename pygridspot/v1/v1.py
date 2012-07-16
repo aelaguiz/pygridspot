@@ -3,20 +3,22 @@
     :mod:`v1` -- Gridspot API Version 1
     ============================================
 
-    .. Copyright 2012 Amir Elaguizy 
+    .. Copyright 2012 Amir Elaguizy
 
     .. You should have received a copy of the BSD License along with this
        program; see the file LICENSE.
-       
-    .. module:: v1 
+
+    .. module:: v1
     .. moduleauthor:: Amir Elaguizy <aelaguiz@gmail.com>
-""" 
+"""
 
 from pygridspot.api import *
 
+
 class Gridspot_api_v1(Gridspot_api):
     def __init__(self, args):
-        args.setdefault('target_url_base', 'https://gridspot.com/compute_api/v1/')
+        args.setdefault(
+            'target_url_base', 'https://gridspot.com/compute_api/v1/')
 
         super(Gridspot_api_v1, self).__init__(args)
 
@@ -34,4 +36,3 @@ class Gridspot_api_v1(Gridspot_api):
         self.cache.save(il)
 
         return il
-
