@@ -64,6 +64,14 @@ class Gridspot:
         """
         return self.api.get_instances()
 
+    def stop_instance(self, instance_id):
+        """
+        Stops an existing instance
+
+        Returns None on success, raises on failure
+        """
+        return self.api.stop_instance(instance_id)
+
     def bootstrap(self, ssh_key, instance, script_path, **kwargs):
         """
         Uploads and runs the specified script. Useful for bringing new servers

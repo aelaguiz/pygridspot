@@ -23,7 +23,7 @@ class Gridspot_api_v1(Gridspot_api):
         super(Gridspot_api_v1, self).__init__(args)
 
     def get_instances(self):
-        url = self.get_request_url('list_instances')
+        url = self._get_request_url('list_instances')
         resp, content = self.http.request(url, "GET")
 
         if resp.status != 200:
@@ -31,8 +31,25 @@ class Gridspot_api_v1(Gridspot_api):
 
         obj = json.loads(content)
 
+        if obj['exception_name']:
+            raise GridspotError(
+                "Received exception from gridspot: " + obj.exception_name)
+
         il = self.cache.load()
         il.update(obj)
         self.cache.save(il)
 
         return il
+
+    def stop_instance(self, instance_id):
+        url = self._get_request_url('stop_instance', instance_id=instance_id)
+        resp, content = self.http.request(url, "GET")
+
+        if resp.status != 200:
+            raise GridspotError("Received failure from gridspot: " + resp)
+
+        obj = json.loads(content)
+
+        if obj['exception_name']:
+            raise GridspotError(
+                "Received exception from gridspot: " + obj.exception_name)

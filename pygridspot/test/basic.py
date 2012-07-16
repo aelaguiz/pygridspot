@@ -22,7 +22,7 @@ class TestBasic(unittest.TestCase):
         g = Gridspot(
             api_key='32523', target_url_base='http://www.testurl.com/')
 
-        url = g.api.get_request_url('testfunc', testarg1=5)
+        url = g.api._get_request_url('testfunc', testarg1=5)
 
         res = urlparse.urlparse(url)
         self.assertEqual(res.scheme, 'http')

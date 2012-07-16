@@ -13,7 +13,8 @@ class V1(unittest.TestCase):
 
         print "Starting", server_path
         self.serv = subprocess.Popen(['python', server_path])
-        time.sleep(1)
+        print "Started"
+        time.sleep(2)
 
     def tearDown(self):
         print "Stopping test server"
@@ -22,7 +23,7 @@ class V1(unittest.TestCase):
         subprocess.call("ps -ef | grep python.*v1_server | grep -v grep | awk "
                         "'{print $2}' | xargs -I {} kill -9 {}", shell=True)
 
-    def test_list(self):
+    def test_requests(self):
         g = Gridspot(
             api_key='testkey', target_url_base='http://localhost:5000')
 
@@ -30,3 +31,5 @@ class V1(unittest.TestCase):
 
         self.assertEquals(len(il.new), 1)
         self.assertEquals(il.new[0].instance_id, "inst_CP2WrQi2WIS4iheyAVkQYw")
+
+        g.stop_instance("inst_CP2WrQi2WIS4iheyAVkQYw")

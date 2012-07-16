@@ -4,8 +4,21 @@ import json
 app = Flask(__name__)
 
 
+@app.route("/stop_instance", methods=["GET"])
+def stop_instance():
+    if request.args['api_key'] != 'testkey':
+        return "BAD ARG"
+
+    instances = {
+        "instances": [{}],
+        "exception_name": ""
+    }
+
+    return json.dumps(instances)
+
+
 @app.route("/list_instances", methods=["GET"])
-def hello():
+def list_instances():
     if request.args['api_key'] != 'testkey':
         return "BAD ARG"
 

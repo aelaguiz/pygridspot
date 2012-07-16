@@ -34,6 +34,41 @@ class Gridspot_api(object):
         # Requires a cache argument, even though we don't use it
         self.http = httplib2.Http(".cache")
 
+    def get_instances(self):
+        raise GridspotError("Unimplemented")
+
+    def stop_instance(self, instance_id):
+        raise GridspotError("Unimplemented")
+
+    """
+    Protected functions
+    """
+
+    def _get_request_url(self, func, **req_params):
+        params = {}
+        params.setdefault('api_key', self.args['api_key'])
+        params.update(req_params)
+
+        params = urllib.urlencode(params)
+        base_url = urlparse.urljoin(self.args['target_url_base'], func)
+
+        return base_url + "?" + params
+
+    """
+    Private functions
+    """
+
+    def __request(self, func, **req_params):
+        req_url = self.__get_request_url(func, req_params)
+
+        self.http.request(req_url, "GET")
+
+    def __validateArgs(self):
+        self.args.setdefault('cache', 'none')
+
+        self.__requireArg('api_key')
+        self.__requireArg('target_url_base')
+
     def __setupCache(self):
         if self.args['cache'] == 'none':
             self.cache = InstanceCache()
@@ -44,22 +79,3 @@ class Gridspot_api(object):
     def __requireArg(self, key):
         if not key in self.args:
             raise GridspotError("Missing argument: " + key)
-
-    def get_request_url(self, func, **req_args):
-        req_args.setdefault('api_key', self.args['api_key'])
-
-        params = urllib.urlencode(req_args)
-        base_url = urlparse.urljoin(self.args['target_url_base'], func)
-
-        return base_url + "?" + params
-
-    def __request(self, func, **req_args):
-        req_url = self.__get_request_url(func, req_args)
-
-        self.http.request(req_url, "GET")
-
-    def __validateArgs(self):
-        self.args.setdefault('cache', 'none')
-
-        self.__requireArg('api_key')
-        self.__requireArg('target_url_base')
